@@ -17,12 +17,7 @@ module.exports = class Texter extends Plugin {
       usage: '{c} [text to reflip!]',
       executor: (args) => ({
         send: true,
-        result: flip(args
-          .join(' ')
-          .split('')
-          .reverse()
-          .join(''))
-
+        result: args.join(' ').split('').reverse().join('').flip(),
       }),
     });
     powercord.api.commands.registerCommand({
@@ -31,8 +26,7 @@ module.exports = class Texter extends Plugin {
       usage: '{c} [Text to clap]',
       executor: (args) => ({
         send: true,
-        result: "👏" + args.join("👏") + "👏"
-
+        result: '👏' + args.join('👏') + '👏',
       }),
     });
 
@@ -42,9 +36,7 @@ module.exports = class Texter extends Plugin {
       usage: '{c} [Text you want to flip]',
       executor: (args) => ({
         send: true,
-        result: flip(args
-          .join(' '))
-
+        result: args.join(' ').flip(),
       }),
     });
   }
@@ -57,13 +49,12 @@ module.exports = class Texter extends Plugin {
   }
 };
 
-
-function flip(toflip) {
-  return toflip.replace(/a/gi, '\u0250')
+String.prototype.flip = function (n) {
+  return this.replace(/a/gi, '\u0250')
     .replace(/b/gi, 'q')
     .replace(/c/gi, '\u0254')
     .replace(/d/gi, 'p')
-    .replace(/p/gi, "d")
+    .replace(/p/gi, 'd')
     .replace(/e/gi, '\u01DD')
     .replace(/f/gi, '\u025F')
     .replace(/g/gi, '\u0183')
@@ -91,5 +82,5 @@ function flip(toflip) {
     .replace(/\u203F/gi, '\u2040')
     .replace(/\u2045/gi, '\u2046')
     .replace(/\u2234/gi, '\u2235')
-    .replace(/\r/gi, '\n')
-}
+    .replace(/\r/gi, '\n');
+};
