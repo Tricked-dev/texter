@@ -49,7 +49,7 @@ module.exports = class Texter extends Plugin {
   }
 };
 
-String.prototype.flip = function (n) {
+String.prototype.flip = function () {
   return this.replace(/a/gi, '\u0250')
     .replace(/b/gi, 'q')
     .replace(/c/gi, '\u0254')
@@ -77,6 +77,7 @@ String.prototype.flip = function (n) {
     .replace(/!/gi, '\u00A1')
     .replace(/'/gi, ',')
     .replace(/</gi, '>')
+    .replace(/>/gi, '<')
     .replace(/_/gi, '\u203E')
     .replace(/;/gi, '\u061B')
     .replace(/\u203F/gi, '\u2040')
