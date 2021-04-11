@@ -39,6 +39,15 @@ module.exports = class Texter extends Plugin {
         result: args.join(' ').flip(),
       }),
     });
+    powercord.api.commands.registerCommand({
+      command: 'space',
+      description: 'Like .clap except it lets you pick anything you want to put inbetween the words.',
+      usage: '{c} [space <char> [sentence...]]',
+      executor: (args) => ({
+        send: true,
+        result: args.slice(1).join(args[0]) + args[0],
+      }),
+    });
   }
 
   pluginWillUnload() {

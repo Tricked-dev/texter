@@ -10,3 +10,4 @@ Commands:
 - flip
 - reverse
 - clap
+- space
