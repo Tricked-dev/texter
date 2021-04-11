@@ -45,7 +45,7 @@ module.exports = class Texter extends Plugin {
       usage: '{c} [space <char> [sentence...]]',
       executor: (args) => ({
         send: true,
-        result: args.slice(1).join(args[0]) + args[0],
+        result: space(args)
       }),
     });
   }
@@ -57,6 +57,13 @@ module.exports = class Texter extends Plugin {
     powercord.api.commands.unregisterCommand('reverse');
   }
 };
+
+function space(args) {
+  const char = args[0]
+  const str = args.join(" ").trim().split(" ").slice(1).join(char)
+  return str + char
+
+}
 
 String.prototype.flip = function () {
   return this.replace(/a/gi, '\u0250')
