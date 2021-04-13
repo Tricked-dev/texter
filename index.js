@@ -4,7 +4,7 @@ module.exports = class Texter extends Plugin {
   startPlugin() {
     powercord.api.commands.registerCommand({
       command: 'shrug',
-      description: 'appends ¯\_(ツ)_/¯ to you message',
+      description: 'appends ¯\\_(ツ)_/¯ to you message',
       usage: '{c} [.shrug]',
       executor: (args) => ({
         send: true,
