@@ -3,6 +3,24 @@ const { Plugin } = require('powercord/entities');
 module.exports = class Texter extends Plugin {
   startPlugin() {
     powercord.api.commands.registerCommand({
+      command: 'small',
+      description: 'makes your text smaller',
+      usage: '{c} [text that you want to make small]',
+      executor: (args) => ({
+        send: true,
+        result: args.join(' ').small(),
+      }),
+    });
+    powercord.api.commands.registerCommand({
+      command: 'smaller',
+      description: 'Makes your text tiny',
+      usage: '{c} [tiny input]',
+      executor: (args) => ({
+        send: true,
+        result: args.join(' ').smaller()
+      }),
+    });
+    powercord.api.commands.registerCommand({
       command: 'reverse',
       description: 'Reverse some text',
       usage: '{c} [text to reverse!]',
@@ -41,11 +59,12 @@ module.exports = class Texter extends Plugin {
     });
     powercord.api.commands.registerCommand({
       command: 'space',
-      description: 'Like .clap except it lets you pick anything you want to put inbetween the words.',
+      description:
+        'Like .clap except it lets you pick anything you want to put inbetween the words.',
       usage: '{c} [space <char> [sentence...]]',
       executor: (args) => ({
         send: true,
-        result: space(args)
+        result: space(args),
       }),
     });
   }
@@ -55,16 +74,86 @@ module.exports = class Texter extends Plugin {
     powercord.api.commands.unregisterCommand('clap');
     powercord.api.commands.unregisterCommand('reflip');
     powercord.api.commands.unregisterCommand('reverse');
+    powercord.api.commands.unregisterCommand('small');
+    powercord.api.commands.unregisterCommand('smaller');
   }
 };
 
 function space(args) {
-  const char = args[0]
-  const str = args.join(" ").trim().split(" ").slice(1).join(char)
-  return str + char
-
+  const char = args[0];
+  const str = args.join(' ').trim().split(' ').slice(1).join(char);
+  return str + char;
 }
+/**
+ * 
+ * @returns ǫ ᴡ ᴇ ʀ ᴛ ʏ ᴜ ɪ ᴏ ᴘ ᴀ s ᴅ ꜰ ɢ ʜ ᴊ ᴋ ʟ ᴢ x ᴄ ᴠ ʙ ɴ ᴍ
+ */
+String.prototype.small = function () {
+  return this
+    .replace(/q/ig, 'ǫ')
+    .replace(/w/gi, 'ᴡ')
+    .replace(/e/gi, 'ᴇ')
+    .replace(/r/gi, 'ʀ')
+    .replace(/t/gi, 'ʀ')
+    .replace(/y/gi, 'ʏ')
+    .replace(/u/gi, 'ᴜ')
+    .replace(/i/gi, 'ɪ')
+    .replace(/o/gi, 'ᴏ')
+    .replace(/p/gi, 'ᴘ')
+    .replace(/a/gi, 'ᴀ')
+    .replace(/s/gi, 's')
+    .replace(/d/gi, 'ᴅ')
+    .replace(/f/gi, 'ꜰ')
+    .replace(/g/gi, 'ɢ')
+    .replace(/h/gi, 'ʜ')
+    .replace(/j/gi, 'ᴊ')
+    .replace(/k/gi, 'ᴋ')
+    .replace(/l/gi, 'ʟ')
+    .replace(/z/gi, 'ᴢ')
+    .replace(/x/gi, 'x')
+    .replace(/c/gi, 'ᴄ')
+    .replace(/v/gi, 'ᴠ')
+    .replace(/b/gi, 'ʙ')
+    .replace(/n/gi, 'ɴ')
+    .replace(/m/gi, 'ᴍ');
+};
 
+/**
+ * 
+ * @returns ᑫ ʷ ᵉ ʳ ᵗ ʸ ᵘ ᶦ ᵒ ᵖ ᵃ ˢ ᵈ ᶠ ᵍ ʰ ʲ ᵏ ˡ ᶻ ˣ ᶜ ᵛ ᵇ ⁿ ᵐ
+ */
+String.prototype.smaller = function () {
+  return this.replace(/q/gi, 'ᑫ')
+    .replace(/w/gi, 'ʷ')
+    .replace(/e/gi, 'ᵉ')
+    .replace(/r/gi, 'ʳ')
+    .replace(/t/gi, 'ᵗ')
+    .replace(/y/gi, 'ʸ')
+    .replace(/u/gi, 'ᵘ')
+    .replace(/i/gi, 'ᶦ')
+    .replace(/o/gi, 'ᵒ')
+    .replace(/p/gi, 'ᵖ')
+    .replace(/a/gi, 'ᵃ')
+    .replace(/s/gi, 'ˢ')
+    .replace(/d/gi, 'ᵈ')
+    .replace(/f/gi, 'ᶠ')
+    .replace(/g/gi, 'ᵍ')
+    .replace(/h/gi, 'ʰ')
+    .replace(/j/gi, 'ʲ')
+    .replace(/k/gi, 'ᵏ')
+    .replace(/l/gi, 'ˡ')
+    .replace(/z/gi, 'ᶻ')
+    .replace(/x/gi, 'ˣ')
+    .replace(/c/gi, 'ᶜ')
+    .replace(/v/gi, 'ᵛ')
+    .replace(/b/gi, 'ᵇ')
+    .replace(/n/gi, 'ⁿ')
+    .replace(/m/gi, 'ᵐ');
+};
+/**
+ * 
+ * @returns q ʍ ǝ ɹ ʇ ʎ u ı o d ɐ s d ɟ ƃ ɥ ɾ ʞ l z x ɔ ʌ q u ɯ
+ */
 String.prototype.flip = function () {
   return this.replace(/a/gi, '\u0250')
     .replace(/b/gi, 'q')

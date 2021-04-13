@@ -11,3 +11,5 @@ Commands:
 - reverse
 - clap
 - space
+- small
+- smaller
