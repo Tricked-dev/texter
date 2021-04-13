@@ -3,6 +3,15 @@ const { Plugin } = require('powercord/entities');
 module.exports = class Texter extends Plugin {
   startPlugin() {
     powercord.api.commands.registerCommand({
+      command: 'shrug',
+      description: 'appends ¯\_(ツ)_/¯ to you message',
+      usage: '{c} [.shrug]',
+      executor: (args) => ({
+        send: true,
+        result: args.join(' ') + "¯\\_(ツ)_/¯",
+      }),
+    });
+    powercord.api.commands.registerCommand({
       command: 'small',
       description: 'makes your text smaller',
       usage: '{c} [text that you want to make small]',
@@ -11,6 +20,7 @@ module.exports = class Texter extends Plugin {
         result: args.join(' ').small(),
       }),
     });
+
     powercord.api.commands.registerCommand({
       command: 'smaller',
       description: 'Makes your text tiny',
@@ -76,6 +86,7 @@ module.exports = class Texter extends Plugin {
     powercord.api.commands.unregisterCommand('reverse');
     powercord.api.commands.unregisterCommand('small');
     powercord.api.commands.unregisterCommand('smaller');
+    powercord.api.commands.unregisterCommand('shrug');
   }
 };
 
