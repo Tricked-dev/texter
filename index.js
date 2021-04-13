@@ -94,7 +94,7 @@ String.prototype.small = function () {
     .replace(/w/gi, 'ᴡ')
     .replace(/e/gi, 'ᴇ')
     .replace(/r/gi, 'ʀ')
-    .replace(/t/gi, 'ʀ')
+    .replace(/t/gi, 'ᴛ')
     .replace(/y/gi, 'ʏ')
     .replace(/u/gi, 'ᴜ')
     .replace(/i/gi, 'ɪ')
