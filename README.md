@@ -1,6 +1,6 @@
 # texter
 
-last 2 plugins combined
+A cool plugin that helps you flex in general chat
 
 ######
 
