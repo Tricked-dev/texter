@@ -60,7 +60,7 @@ module.exports = class Texter extends Plugin {
 
     powercord.api.commands.registerCommand({
       command: 'fw',
-      description: 'flips your text',
+      description: 'ｆｕｌｌ　ｗｉｄｔｈｓ　ｙｏｕｒ　ｔｅｘｔ',
       usage: '{c} [Text you want to flip]',
       executor: (args) => ({
         send: true,
@@ -69,7 +69,7 @@ module.exports = class Texter extends Plugin {
     });
     powercord.api.commands.registerCommand({
       command: 'flip',
-      description: 'ｆｕｌｌ　ｗｉｄｔｈｓ　ｙｏｕｒ　ｔｅｘｔ',
+      description: 'flips your text',
       usage: '{c} [input]',
       executor: (args) => ({
         send: true,
