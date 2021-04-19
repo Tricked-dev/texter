@@ -1,5 +1,5 @@
 const { Plugin } = require('powercord/entities');
-
+/* eslint-disable */
 module.exports = class Texter extends Plugin {
   startPlugin() {
     powercord.api.commands.registerCommand({
@@ -59,9 +59,18 @@ module.exports = class Texter extends Plugin {
     });
 
     powercord.api.commands.registerCommand({
-      command: 'flip',
+      command: 'fw',
       description: 'flips your text',
       usage: '{c} [Text you want to flip]',
+      executor: (args) => ({
+        send: true,
+        result: args.join(' ').fullWidth(),
+      }),
+    });
+    powercord.api.commands.registerCommand({
+      command: 'flip',
+      description: 'ｆｕｌｌ　ｗｉｄｔｈｓ　ｙｏｕｒ　ｔｅｘｔ',
+      usage: '{c} [input]',
       executor: (args) => ({
         send: true,
         result: args.join(' ').flip(),
@@ -69,8 +78,7 @@ module.exports = class Texter extends Plugin {
     });
     powercord.api.commands.registerCommand({
       command: 'space',
-      description:
-        'Like .clap except it lets you pick anything you want to put inbetween the words.',
+      description: 'Like .clap except it lets you pick anything you want to put inbetween the words.',
       usage: '{c} [space <char> [sentence...]]',
       executor: (args) => ({
         send: true,
@@ -81,6 +89,7 @@ module.exports = class Texter extends Plugin {
 
   pluginWillUnload() {
     powercord.api.commands.unregisterCommand('flip');
+    powercord.api.commands.unregisterCommand('fw');
     powercord.api.commands.unregisterCommand('clap');
     powercord.api.commands.unregisterCommand('reflip');
     powercord.api.commands.unregisterCommand('reverse');
@@ -200,4 +209,38 @@ String.prototype.flip = function () {
     .replace(/\u2045/gi, '\u2046')
     .replace(/\u2234/gi, '\u2235')
     .replace(/\r/gi, '\n');
+};
+/**
+ * 
+ * @returns ｑ　ｗ　ｅ　ｒ　ｔ　ｙ　ｕ　ｉ　ｏ　ｐ　ａ　ｓ　ｄ　ｆ　ｇ　ｈ　ｊ　ｋ　ｌ　ｚ　ｘ　ｃ　ｖ　ｂ　ｎ　ｍ
+ */
+String.prototype.fullWidth = function () {
+  return this
+    .replace(/ /gi, "　")
+    .replace(/q/ig, 'ｑ')
+    .replace(/w/gi, 'ｗ')
+    .replace(/e/gi, 'ｅ')
+    .replace(/r/gi, 'ｒ')
+    .replace(/t/gi, 'ｔ')
+    .replace(/y/gi, 'ｙ')
+    .replace(/u/gi, 'ｕ')
+    .replace(/i/gi, 'ｉ')
+    .replace(/o/gi, 'ｏ')
+    .replace(/p/gi, 'ｐ')
+    .replace(/a/gi, 'ａ')
+    .replace(/s/gi, 'ｓ')
+    .replace(/d/gi, 'ｄ')
+    .replace(/f/gi, 'ｆ')
+    .replace(/g/gi, 'ｇ')
+    .replace(/h/gi, 'ｈ')
+    .replace(/j/gi, 'ｊ')
+    .replace(/k/gi, 'ｋ')
+    .replace(/l/gi, 'ｌ')
+    .replace(/z/gi, 'ｚ')
+    .replace(/x/gi, 'ｘ')
+    .replace(/c/gi, 'ｃ')
+    .replace(/v/gi, 'ｖ')
+    .replace(/b/gi, 'ｂ')
+    .replace(/n/gi, 'ｎ')
+    .replace(/m/gi, 'ｍ');
 };
