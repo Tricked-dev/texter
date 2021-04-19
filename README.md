@@ -13,4 +13,4 @@ Commands:
 - space
 - small
 - smaller
-- fw ( full width )
+- fw
