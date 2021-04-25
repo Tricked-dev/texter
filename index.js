@@ -2,6 +2,17 @@ const { Plugin } = require('powercord/entities');
 /* eslint-disable */
 module.exports = class Texter extends Plugin {
   startPlugin() {
+    for (const alias of ["fw", "fullwidth"]) {
+      powercord.api.commands.registerCommand({
+        command: alias,
+        description: 'ｆｕｌｌ　ｗｉｄｔｈｓ　ｙｏｕｒ　ｔｅｘｔ',
+        usage: '{c} [Text you want to flip]',
+        executor: (args) => ({
+          send: true,
+          result: args.join(' ').fullWidth(),
+        }),
+      });
+    }
     powercord.api.commands.registerCommand({
       command: 'shrug',
       description: 'appends ¯\\_(ツ)_/¯ to you message',
@@ -59,15 +70,6 @@ module.exports = class Texter extends Plugin {
     });
 
     powercord.api.commands.registerCommand({
-      command: 'fw',
-      description: 'ｆｕｌｌ　ｗｉｄｔｈｓ　ｙｏｕｒ　ｔｅｘｔ',
-      usage: '{c} [Text you want to flip]',
-      executor: (args) => ({
-        send: true,
-        result: args.join(' ').fullWidth(),
-      }),
-    });
-    powercord.api.commands.registerCommand({
       command: 'flip',
       description: 'flips your text',
       usage: '{c} [input]',
@@ -88,20 +90,15 @@ module.exports = class Texter extends Plugin {
   }
 
   pluginWillUnload() {
-    powercord.api.commands.unregisterCommand('flip');
-    powercord.api.commands.unregisterCommand('fw');
-    powercord.api.commands.unregisterCommand('clap');
-    powercord.api.commands.unregisterCommand('reflip');
-    powercord.api.commands.unregisterCommand('reverse');
-    powercord.api.commands.unregisterCommand('small');
-    powercord.api.commands.unregisterCommand('smaller');
-    powercord.api.commands.unregisterCommand('shrug');
+    for (const command of ["flip", "fw", "clap", "reflip", "reverse", "small", "smaller", "shrug"]) {
+      powercord.api.commands.unregisterCommand(command)
+    }
   }
 };
 
 function space(args) {
   const char = args[0];
-  const str = args.join(' ').trim().split(' ').slice(1).join(char);
+  const str = args.slice(1).join(char);
   return str + char;
 }
 /**
