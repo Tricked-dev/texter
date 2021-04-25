@@ -2,26 +2,36 @@ const { Plugin } = require('powercord/entities');
 /* eslint-disable */
 module.exports = class Texter extends Plugin {
   startPlugin() {
-    for (const alias of ["fw", "fullwidth"]) {
-      powercord.api.commands.registerCommand({
-        command: alias,
-        description: 'ｆｕｌｌ　ｗｉｄｔｈｓ　ｙｏｕｒ　ｔｅｘｔ',
-        usage: '{c} [Text you want to flip]',
-        executor: (args) => ({
-          send: true,
-          result: args.join(' ').fullWidth(),
-        }),
-      });
-    }
+    powercord.api.commands.registerCommand({
+      command: 'fw',
+      description: 'ｆｕｌｌ　ｗｉｄｔｈｓ　ｙｏｕｒ　ｔｅｘｔ',
+      usage: '{c} [Text you want to flip]',
+      executor: (args) => ({
+        send: true,
+        result: args.join(' ').fullWidth(),
+      }),
+    });
+
+    powercord.api.commands.registerCommand({
+      command: 'fullwidth',
+      description: 'ｆｕｌｌ　ｗｉｄｔｈｓ　ｙｏｕｒ　ｔｅｘｔ',
+      usage: '{c} [Text you want to flip]',
+      executor: (args) => ({
+        send: true,
+        result: args.join(' ').fullWidth(),
+      }),
+    });
+
     powercord.api.commands.registerCommand({
       command: 'shrug',
       description: 'appends ¯\\_(ツ)_/¯ to you message',
       usage: '{c} [.shrug]',
       executor: (args) => ({
         send: true,
-        result: args.join(' ') + "¯\\_(ツ)_/¯",
+        result: args.join(' ') + '¯\\_(ツ)_/¯',
       }),
     });
+
     powercord.api.commands.registerCommand({
       command: 'small',
       description: 'makes your text smaller',
@@ -38,9 +48,10 @@ module.exports = class Texter extends Plugin {
       usage: '{c} [tiny input]',
       executor: (args) => ({
         send: true,
-        result: args.join(' ').smaller()
+        result: args.join(' ').smaller(),
       }),
     });
+
     powercord.api.commands.registerCommand({
       command: 'reverse',
       description: 'Reverse some text',
@@ -59,6 +70,7 @@ module.exports = class Texter extends Plugin {
         result: args.join(' ').split('').reverse().join('').flip(),
       }),
     });
+
     powercord.api.commands.registerCommand({
       command: 'clap',
       description: 'adds clap emojis to your text',
@@ -78,9 +90,11 @@ module.exports = class Texter extends Plugin {
         result: args.join(' ').flip(),
       }),
     });
+
     powercord.api.commands.registerCommand({
       command: 'space',
-      description: 'Like .clap except it lets you pick anything you want to put inbetween the words.',
+      description:
+        'Like .clap except it lets you pick anything you want to put inbetween the words.',
       usage: '{c} [space <char> [sentence...]]',
       executor: (args) => ({
         send: true,
@@ -90,8 +104,18 @@ module.exports = class Texter extends Plugin {
   }
 
   pluginWillUnload() {
-    for (const command of ["flip", "fw", "clap", "reflip", "reverse", "small", "smaller", "shrug"]) {
-      powercord.api.commands.unregisterCommand(command)
+    for (const command of [
+      'flip',
+      'fw',
+      'clap',
+      'reflip',
+      'reverse',
+      'small',
+      'smaller',
+      'shrug',
+      'fullwidth',
+    ]) {
+      powercord.api.commands.unregisterCommand(command);
     }
   }
 };
@@ -102,12 +126,11 @@ function space(args) {
   return str + char;
 }
 /**
- * 
+ *
  * @returns ǫ ᴡ ᴇ ʀ ᴛ ʏ ᴜ ɪ ᴏ ᴘ ᴀ s ᴅ ꜰ ɢ ʜ ᴊ ᴋ ʟ ᴢ x ᴄ ᴠ ʙ ɴ ᴍ
  */
 String.prototype.small = function () {
-  return this
-    .replace(/q/ig, 'ǫ')
+  return this.replace(/q/gi, 'ǫ')
     .replace(/w/gi, 'ᴡ')
     .replace(/e/gi, 'ᴇ')
     .replace(/r/gi, 'ʀ')
@@ -136,7 +159,7 @@ String.prototype.small = function () {
 };
 
 /**
- * 
+ *
  * @returns ᑫ ʷ ᵉ ʳ ᵗ ʸ ᵘ ᶦ ᵒ ᵖ ᵃ ˢ ᵈ ᶠ ᵍ ʰ ʲ ᵏ ˡ ᶻ ˣ ᶜ ᵛ ᵇ ⁿ ᵐ
  */
 String.prototype.smaller = function () {
@@ -168,7 +191,7 @@ String.prototype.smaller = function () {
     .replace(/m/gi, 'ᵐ');
 };
 /**
- * 
+ *
  * @returns q ʍ ǝ ɹ ʇ ʎ u ı o d ɐ s d ɟ ƃ ɥ ɾ ʞ l z x ɔ ʌ q u ɯ
  */
 String.prototype.flip = function () {
@@ -208,13 +231,12 @@ String.prototype.flip = function () {
     .replace(/\r/gi, '\n');
 };
 /**
- * 
+ *
  * @returns ｑ　ｗ　ｅ　ｒ　ｔ　ｙ　ｕ　ｉ　ｏ　ｐ　ａ　ｓ　ｄ　ｆ　ｇ　ｈ　ｊ　ｋ　ｌ　ｚ　ｘ　ｃ　ｖ　ｂ　ｎ　ｍ
  */
 String.prototype.fullWidth = function () {
-  return this
-    .replace(/ /gi, "　")
-    .replace(/q/ig, 'ｑ')
+  return this.replace(/ /gi, '　')
+    .replace(/q/gi, 'ｑ')
     .replace(/w/gi, 'ｗ')
     .replace(/e/gi, 'ｅ')
     .replace(/r/gi, 'ｒ')
