@@ -8,7 +8,7 @@ module.exports = class Texter extends Plugin {
       usage: '{c} [Text you want to flip]',
       executor: (args) => ({
         send: true,
-        result: args.join(' ').fullWidth(),
+        result: args.join(' ').fullWidth().FullWidth(),
       }),
     });
 
@@ -18,7 +18,7 @@ module.exports = class Texter extends Plugin {
       usage: '{c} [Text you want to flip]',
       executor: (args) => ({
         send: true,
-        result: args.join(' ').fullWidth(),
+        result: args.join(' ').fullWidth().FullWidth(),
       }),
     });
 
@@ -230,36 +230,71 @@ String.prototype.flip = function () {
     .replace(/\u2234/gi, '\u2235')
     .replace(/\r/gi, '\n');
 };
+
+/**
+ * @returns Ｑ　Ｗ　Ｅ　Ｒ　Ｔ　Ｙ　Ｕ　Ｉ　Ｏ　Ｐ　Ａ　Ｓ　Ｄ　Ｆ　Ｇ　Ｈ　Ｊ　Ｋ　Ｌ　Ｚ　Ｘ　Ｃ　Ｖ　Ｂ　Ｎ　Ｍ
+ */
+String.prototype.FullWidth = function () {
+  return this
+    .replace(/Q/g, 'Ｑ')
+    .replace(/W/g, 'Ｗ')
+    .replace(/R/g, 'Ｅ')
+    .replace(/R/g, 'Ｒ')
+    .replace(/T/g, 'Ｔ')
+    .replace(/Y/g, 'Ｙ')
+    .replace(/U/g, 'Ｕ')
+    .replace(/I/g, 'Ｉ')
+    .replace(/O/g, 'Ｏ')
+    .replace(/P/g, 'Ｐ')
+    .replace(/A/g, 'Ａ')
+    .replace(/S/g, 'Ｓ')
+    .replace(/D/g, 'Ｄ')
+    .replace(/F/g, 'Ｆ')
+    .replace(/G/g, 'Ｇ')
+    .replace(/H/g, 'Ｈ')
+    .replace(/J/g, 'Ｊ')
+    .replace(/K/g, 'Ｋ')
+    .replace(/L/g, 'Ｌ')
+    .replace(/Z/g, 'Ｚ')
+    .replace(/X/g, 'Ｘ')
+    .replace(/C/g, 'Ｃ')
+    .replace(/V/g, 'Ｖ')
+    .replace(/B/g, 'Ｂ')
+    .replace(/N/g, 'Ｎ')
+    .replace(/M/g, 'Ｍ');
+}
+
+
 /**
  *
  * @returns ｑ　ｗ　ｅ　ｒ　ｔ　ｙ　ｕ　ｉ　ｏ　ｐ　ａ　ｓ　ｄ　ｆ　ｇ　ｈ　ｊ　ｋ　ｌ　ｚ　ｘ　ｃ　ｖ　ｂ　ｎ　ｍ
  */
 String.prototype.fullWidth = function () {
   return this.replace(/ /gi, '　')
-    .replace(/q/gi, 'ｑ')
-    .replace(/w/gi, 'ｗ')
-    .replace(/e/gi, 'ｅ')
-    .replace(/r/gi, 'ｒ')
-    .replace(/t/gi, 'ｔ')
-    .replace(/y/gi, 'ｙ')
-    .replace(/u/gi, 'ｕ')
-    .replace(/i/gi, 'ｉ')
-    .replace(/o/gi, 'ｏ')
-    .replace(/p/gi, 'ｐ')
-    .replace(/a/gi, 'ａ')
-    .replace(/s/gi, 'ｓ')
-    .replace(/d/gi, 'ｄ')
-    .replace(/f/gi, 'ｆ')
-    .replace(/g/gi, 'ｇ')
-    .replace(/h/gi, 'ｈ')
-    .replace(/j/gi, 'ｊ')
-    .replace(/k/gi, 'ｋ')
-    .replace(/l/gi, 'ｌ')
-    .replace(/z/gi, 'ｚ')
-    .replace(/x/gi, 'ｘ')
-    .replace(/c/gi, 'ｃ')
-    .replace(/v/gi, 'ｖ')
-    .replace(/b/gi, 'ｂ')
-    .replace(/n/gi, 'ｎ')
-    .replace(/m/gi, 'ｍ');
+    .replace(/q/g, 'ｑ')
+    .replace(/w/g, 'ｗ')
+    .replace(/e/g, 'ｅ')
+    .replace(/r/g, 'ｒ')
+    .replace(/t/g, 'ｔ')
+    .replace(/y/g, 'ｙ')
+    .replace(/u/g, 'ｕ')
+    .replace(/i/g, 'ｉ')
+    .replace(/o/g, 'ｏ')
+    .replace(/p/g, 'ｐ')
+    .replace(/a/g, 'ａ')
+    .replace(/s/g, 'ｓ')
+    .replace(/d/g, 'ｄ')
+    .replace(/f/g, 'ｆ')
+    .replace(/g/g, 'ｇ')
+    .replace(/h/g, 'ｈ')
+    .replace(/j/g, 'ｊ')
+    .replace(/k/g, 'ｋ')
+    .replace(/l/g, 'ｌ')
+    .replace(/z/g, 'ｚ')
+    .replace(/x/g, 'ｘ')
+    .replace(/c/g, 'ｃ')
+    .replace(/v/g, 'ｖ')
+    .replace(/b/g, 'ｂ')
+    .replace(/n/g, 'ｎ')
+    .replace(/m/g, 'ｍ');
 };
