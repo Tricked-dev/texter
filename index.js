@@ -1,5 +1,11 @@
-const { Plugin } = require('powercord/entities');
 /* eslint-disable */
+const { Plugin } = require('powercord/entities');
+const {
+  smallLetters,
+  smallerLetters,
+  flipLetters,
+  fullWidthLetters,
+} = require('./maps');
 module.exports = class Texter extends Plugin {
   startPlugin() {
     powercord.api.commands.registerCommand({
@@ -8,7 +14,7 @@ module.exports = class Texter extends Plugin {
       usage: '{c} [Text you want to flip]',
       executor: (args) => ({
         send: true,
-        result: args.join(' ').fullWidth().FullWidth(),
+        result: args.join(' ').fullWidth(),
       }),
     });
 
@@ -18,7 +24,7 @@ module.exports = class Texter extends Plugin {
       usage: '{c} [Text you want to flip]',
       executor: (args) => ({
         send: true,
-        result: args.join(' ').fullWidth().FullWidth(),
+        result: args.join(' ').fullWidth(),
       }),
     });
 
@@ -125,176 +131,31 @@ function space(args) {
   const str = args.slice(1).join(char);
   return str + char;
 }
+
 /**
- *
  * @returns ǫ ᴡ ᴇ ʀ ᴛ ʏ ᴜ ɪ ᴏ ᴘ ᴀ s ᴅ ꜰ ɢ ʜ ᴊ ᴋ ʟ ᴢ x ᴄ ᴠ ʙ ɴ ᴍ
  */
 String.prototype.small = function () {
-  return this.replace(/q/gi, 'ǫ')
-    .replace(/w/gi, 'ᴡ')
-    .replace(/e/gi, 'ᴇ')
-    .replace(/r/gi, 'ʀ')
-    .replace(/t/gi, 'ᴛ')
-    .replace(/y/gi, 'ʏ')
-    .replace(/u/gi, 'ᴜ')
-    .replace(/i/gi, 'ɪ')
-    .replace(/o/gi, 'ᴏ')
-    .replace(/p/gi, 'ᴘ')
-    .replace(/a/gi, 'ᴀ')
-    .replace(/s/gi, 's')
-    .replace(/d/gi, 'ᴅ')
-    .replace(/f/gi, 'ꜰ')
-    .replace(/g/gi, 'ɢ')
-    .replace(/h/gi, 'ʜ')
-    .replace(/j/gi, 'ᴊ')
-    .replace(/k/gi, 'ᴋ')
-    .replace(/l/gi, 'ʟ')
-    .replace(/z/gi, 'ᴢ')
-    .replace(/x/gi, 'x')
-    .replace(/c/gi, 'ᴄ')
-    .replace(/v/gi, 'ᴠ')
-    .replace(/b/gi, 'ʙ')
-    .replace(/n/gi, 'ɴ')
-    .replace(/m/gi, 'ᴍ');
+  return [...this.toLowerCase()].map((l) => smallLetters[l] || l).join('');
 };
 
 /**
- *
  * @returns ᑫ ʷ ᵉ ʳ ᵗ ʸ ᵘ ᶦ ᵒ ᵖ ᵃ ˢ ᵈ ᶠ ᵍ ʰ ʲ ᵏ ˡ ᶻ ˣ ᶜ ᵛ ᵇ ⁿ ᵐ
  */
 String.prototype.smaller = function () {
-  return this.replace(/q/gi, 'ᑫ')
-    .replace(/w/gi, 'ʷ')
-    .replace(/e/gi, 'ᵉ')
-    .replace(/r/gi, 'ʳ')
-    .replace(/t/gi, 'ᵗ')
-    .replace(/y/gi, 'ʸ')
-    .replace(/u/gi, 'ᵘ')
-    .replace(/i/gi, 'ᶦ')
-    .replace(/o/gi, 'ᵒ')
-    .replace(/p/gi, 'ᵖ')
-    .replace(/a/gi, 'ᵃ')
-    .replace(/s/gi, 'ˢ')
-    .replace(/d/gi, 'ᵈ')
-    .replace(/f/gi, 'ᶠ')
-    .replace(/g/gi, 'ᵍ')
-    .replace(/h/gi, 'ʰ')
-    .replace(/j/gi, 'ʲ')
-    .replace(/k/gi, 'ᵏ')
-    .replace(/l/gi, 'ˡ')
-    .replace(/z/gi, 'ᶻ')
-    .replace(/x/gi, 'ˣ')
-    .replace(/c/gi, 'ᶜ')
-    .replace(/v/gi, 'ᵛ')
-    .replace(/b/gi, 'ᵇ')
-    .replace(/n/gi, 'ⁿ')
-    .replace(/m/gi, 'ᵐ');
+  return [...this.toLowerCase()].map((l) => smallerLetters[l] || l).join('');
 };
+
 /**
- *
  * @returns q ʍ ǝ ɹ ʇ ʎ u ı o d ɐ s d ɟ ƃ ɥ ɾ ʞ l z x ɔ ʌ q u ɯ
  */
 String.prototype.flip = function () {
-  return this.replace(/a/gi, '\u0250')
-    .replace(/b/gi, 'q')
-    .replace(/c/gi, '\u0254')
-    .replace(/d/gi, 'p')
-    .replace(/p/gi, 'd')
-    .replace(/e/gi, '\u01DD')
-    .replace(/f/gi, '\u025F')
-    .replace(/g/gi, '\u0183')
-    .replace(/h/gi, '\u0265')
-    .replace(/i/gi, '\u0131')
-    .replace(/j/gi, '\u027E')
-    .replace(/k/gi, '\u029E')
-    .replace(/m/gi, '\u026F')
-    .replace(/n/gi, 'u')
-    .replace(/r/gi, '\u0279')
-    .replace(/t/gi, '\u0287')
-    .replace(/v/gi, '\u028C')
-    .replace(/w/gi, '\u028D')
-    .replace(/y/gi, '\u028E')
-    .replace(/\./gi, '\u02D9')
-    .replace(/\[/gi, ']')
-    .replace(/\(/gi, ')')
-    .replace(/{/gi, '}')
-    .replace(/\?/gi, '\u00BF')
-    .replace(/!/gi, '\u00A1')
-    .replace(/'/gi, ',')
-    .replace(/</gi, '>')
-    .replace(/>/gi, '<')
-    .replace(/_/gi, '\u203E')
-    .replace(/;/gi, '\u061B')
-    .replace(/\u203F/gi, '\u2040')
-    .replace(/\u2045/gi, '\u2046')
-    .replace(/\u2234/gi, '\u2235')
-    .replace(/\r/gi, '\n');
+  return [...this.toLowerCase()].map((l) => flipLetters[l] || l).join('');
 };
 
 /**
- * @returns Ｑ　Ｗ　Ｅ　Ｒ　Ｔ　Ｙ　Ｕ　Ｉ　Ｏ　Ｐ　Ａ　Ｓ　Ｄ　Ｆ　Ｇ　Ｈ　Ｊ　Ｋ　Ｌ　Ｚ　Ｘ　Ｃ　Ｖ　Ｂ　Ｎ　Ｍ
- */
-String.prototype.FullWidth = function () {
-  return this
-    .replace(/Q/g, 'Ｑ')
-    .replace(/W/g, 'Ｗ')
-    .replace(/R/g, 'Ｅ')
-    .replace(/R/g, 'Ｒ')
-    .replace(/T/g, 'Ｔ')
-    .replace(/Y/g, 'Ｙ')
-    .replace(/U/g, 'Ｕ')
-    .replace(/I/g, 'Ｉ')
-    .replace(/O/g, 'Ｏ')
-    .replace(/P/g, 'Ｐ')
-    .replace(/A/g, 'Ａ')
-    .replace(/S/g, 'Ｓ')
-    .replace(/D/g, 'Ｄ')
-    .replace(/F/g, 'Ｆ')
-    .replace(/G/g, 'Ｇ')
-    .replace(/H/g, 'Ｈ')
-    .replace(/J/g, 'Ｊ')
-    .replace(/K/g, 'Ｋ')
-    .replace(/L/g, 'Ｌ')
-    .replace(/Z/g, 'Ｚ')
-    .replace(/X/g, 'Ｘ')
-    .replace(/C/g, 'Ｃ')
-    .replace(/V/g, 'Ｖ')
-    .replace(/B/g, 'Ｂ')
-    .replace(/N/g, 'Ｎ')
-    .replace(/M/g, 'Ｍ');
-}
-
-
-/**
- *
- * @returns ｑ　ｗ　ｅ　ｒ　ｔ　ｙ　ｕ　ｉ　ｏ　ｐ　ａ　ｓ　ｄ　ｆ　ｇ　ｈ　ｊ　ｋ　ｌ　ｚ　ｘ　ｃ　ｖ　ｂ　ｎ　ｍ
+ * @returns ｑ　ｗ　ｅ　ｒ　ｔ　ｙ　ｕ　ｉ　ｏ　ｐ　ａ　ｓ　ｄ　ｆ　ｇ　ｈ　ｊ　ｋ　ｌ　ｚ　ｘ　ｃ　ｖ　ｂ　ｎ　ｍ || Ｑ　Ｗ　Ｅ　Ｒ　Ｔ　Ｙ　Ｕ　Ｉ　Ｏ　Ｐ　Ａ　Ｓ　Ｄ　Ｆ　Ｇ　Ｈ　Ｊ　Ｋ　Ｌ　Ｚ　Ｘ　Ｃ　Ｖ　Ｂ　Ｎ　Ｍ
  */
 String.prototype.fullWidth = function () {
-  return this.replace(/ /gi, '　')
-    .replace(/q/g, 'ｑ')
-    .replace(/w/g, 'ｗ')
-    .replace(/e/g, 'ｅ')
-    .replace(/r/g, 'ｒ')
-    .replace(/t/g, 'ｔ')
-    .replace(/y/g, 'ｙ')
-    .replace(/u/g, 'ｕ')
-    .replace(/i/g, 'ｉ')
-    .replace(/o/g, 'ｏ')
-    .replace(/p/g, 'ｐ')
-    .replace(/a/g, 'ａ')
-    .replace(/s/g, 'ｓ')
-    .replace(/d/g, 'ｄ')
-    .replace(/f/g, 'ｆ')
-    .replace(/g/g, 'ｇ')
-    .replace(/h/g, 'ｈ')
-    .replace(/j/g, 'ｊ')
-    .replace(/k/g, 'ｋ')
-    .replace(/l/g, 'ｌ')
-    .replace(/z/g, 'ｚ')
-    .replace(/x/g, 'ｘ')
-    .replace(/c/g, 'ｃ')
-    .replace(/v/g, 'ｖ')
-    .replace(/b/g, 'ｂ')
-    .replace(/n/g, 'ｎ')
-    .replace(/m/g, 'ｍ');
+  return [...this.toLowerCase()].map((l) => fullWidthLetters[l] || l).join('');
 };
