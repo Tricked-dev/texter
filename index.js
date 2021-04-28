@@ -173,6 +173,7 @@ String.prototype.emoji = function () {
 };
 
 /**
+ * //０１２３４５６７８９
  * @returns ｑ　ｗ　ｅ　ｒ　ｔ　ｙ　ｕ　ｉ　ｏ　ｐ　ａ　ｓ　ｄ　ｆ　ｇ　ｈ　ｊ　ｋ　ｌ　ｚ　ｘ　ｃ　ｖ　ｂ　ｎ　ｍ || Ｑ　Ｗ　Ｅ　Ｒ　Ｔ　Ｙ　Ｕ　Ｉ　Ｏ　Ｐ　Ａ　Ｓ　Ｄ　Ｆ　Ｇ　Ｈ　Ｊ　Ｋ　Ｌ　Ｚ　Ｘ　Ｃ　Ｖ　Ｂ　Ｎ　Ｍ
  */
 String.prototype.fullWidth = function () {
