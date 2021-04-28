@@ -5,6 +5,7 @@ const {
   smallerLetters,
   flipLetters,
   fullWidthLetters,
+  emojiLetters,
 } = require('./maps');
 module.exports = class Texter extends Plugin {
   startPlugin() {
@@ -15,6 +16,16 @@ module.exports = class Texter extends Plugin {
       executor: (args) => ({
         send: true,
         result: args.join(' ').fullWidth(),
+      }),
+    });
+
+    powercord.api.commands.registerCommand({
+      command: 'emoji',
+      description: 'Turn your text into big emoji letters',
+      usage: '{c} [Text to Emojify]',
+      executor: (args) => ({
+        send: true,
+        result: args.join(' ').split('').join(' ').emoji(),
       }),
     });
 
@@ -120,6 +131,7 @@ module.exports = class Texter extends Plugin {
       'smaller',
       'shrug',
       'fullwidth',
+      'emoji',
     ]) {
       powercord.api.commands.unregisterCommand(command);
     }
@@ -151,6 +163,13 @@ String.prototype.smaller = function () {
  */
 String.prototype.flip = function () {
   return [...this.toLowerCase()].map((l) => flipLetters[l] || l).join('');
+};
+
+/**
+ * @returns cant document this ffs
+ */
+String.prototype.emoji = function () {
+  return [...this.toLowerCase()].map((l) => emojiLetters[l] || l).join('');
 };
 
 /**
