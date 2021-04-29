@@ -14,3 +14,6 @@ Commands:
 - small
 - smaller
 - fw
+
+
+[Discord](https://discord.gg/KkMKCchJb8)
