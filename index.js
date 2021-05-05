@@ -19,14 +19,13 @@ module.exports = class Texter extends Plugin {
       }),
     });
 
-
     powercord.api.commands.registerCommand({
       command: 'zwsit',
       description: 'Add zero width spaces between your message useful in some cases',
       usage: '{c} [ZWS]',
       executor: (args) => ({
         send: true,
-        result: args.join(' ').split("").join("\u200b"),
+        result: '\u200b' + args.join(' ').split('').join('\u200b') + '\u200bP',
       }),
     });
 
@@ -36,7 +35,7 @@ module.exports = class Texter extends Plugin {
       usage: '{c} [ZWS]',
       executor: (args) => ({
         send: true,
-        result: args.join(' ').replace(/\u200b/ig, "")
+        result: args.join(' ').replace(/\u200b/gi, ''),
       }),
     });
 
