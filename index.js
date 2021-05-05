@@ -19,6 +19,27 @@ module.exports = class Texter extends Plugin {
       }),
     });
 
+
+    powercord.api.commands.registerCommand({
+      command: 'zwsit',
+      description: 'Add zero width spaces between your message useful in some cases',
+      usage: '{c} [ZWS]',
+      executor: (args) => ({
+        send: true,
+        result: args.join(' ').split("").join("\u200b"),
+      }),
+    });
+
+    powercord.api.commands.registerCommand({
+      command: 'nozws',
+      description: 'Removes all the zero width spaces from your message',
+      usage: '{c} [ZWS]',
+      executor: (args) => ({
+        send: true,
+        result: args.join(' ').replace(/\u200b/ig, "")
+      }),
+    });
+
     powercord.api.commands.registerCommand({
       command: 'emoji',
       description: 'Turn your text into big emoji letters',

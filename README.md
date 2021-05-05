@@ -14,6 +14,7 @@ Commands:
 - small
 - smaller
 - fw
-
+- zwsit
+- nozws
 
 [Discord](https://discord.gg/KkMKCchJb8)
