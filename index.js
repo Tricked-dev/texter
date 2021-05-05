@@ -25,7 +25,7 @@ module.exports = class Texter extends Plugin {
       usage: '{c} [ZWS]',
       executor: (args) => ({
         send: true,
-        result: '\u200b' + args.join(' ').split('').join('\u200b') + '\u200bP',
+        result: '\u200b' + args.join(' ').split('').join('\u200b') + '\u200b',
       }),
     });
 
