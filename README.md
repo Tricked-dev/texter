@@ -16,5 +16,7 @@ Commands:
 - fw
 - zwsit
 - nozws
+- encode
+- decode
 
 [Discord](https://discord.gg/KkMKCchJb8)

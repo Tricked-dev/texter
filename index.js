@@ -21,7 +21,8 @@ module.exports = class Texter extends Plugin {
 
     powercord.api.commands.registerCommand({
       command: 'zwsit',
-      description: 'Add zero width spaces between your message useful in some cases',
+      description:
+        'Add zero width spaces between your message useful in some cases',
       usage: '{c} [ZWS]',
       executor: (args) => ({
         send: true,
@@ -105,6 +106,26 @@ module.exports = class Texter extends Plugin {
       executor: (args) => ({
         send: true,
         result: args.join(' ').split('').reverse().join('').flip(),
+      }),
+    });
+
+    powercord.api.commands.registerCommand({
+      command: 'encode',
+      description: 'Encodes your text with base64 encoding',
+      usage: '{c} [Text to encode]',
+      executor: (args) => ({
+        send: true,
+        result: Buffer.from(args.join(" "), 'utf-8').toString('base64'),
+      }),
+    });
+
+    powercord.api.commands.registerCommand({
+      command: 'decode',
+      description: 'Decodes your text from base64 encoding',
+      usage: '{c} [Text to encode]',
+      executor: (args) => ({
+        send: true,
+        result: Buffer.from(args.join(" "), 'base64').toString('utf-8'),
       }),
     });
 
