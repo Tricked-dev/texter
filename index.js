@@ -7,7 +7,7 @@ const {
   fullWidthLetters,
   emojiLetters,
 } = require('./maps');
-const owofy = require('./uwufy');
+const uwufy = require('./uwufy');
 module.exports = class Texter extends Plugin {
   startPlugin() {
     powercord.api.commands.registerCommand({
@@ -136,7 +136,7 @@ module.exports = class Texter extends Plugin {
       usage: '{c} [...........]]',
       executor: (args) => ({
         send: true,
-        result: owofy(args),
+        result: uwufy(args),
       }),
     });
 
@@ -184,6 +184,7 @@ module.exports = class Texter extends Plugin {
       'shrug',
       'fullwidth',
       'emoji',
+      'uwufy'
     ]) {
       powercord.api.commands.unregisterCommand(command);
     }

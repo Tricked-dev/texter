@@ -18,5 +18,6 @@ Commands:
 - nozws
 - encode
 - decode
+- uwufy
 
 [Discord](https://discord.gg/KkMKCchJb8)
