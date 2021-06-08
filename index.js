@@ -136,7 +136,7 @@ module.exports = class Texter extends Plugin {
       usage: '{c} [...........]]',
       executor: (args) => ({
         send: true,
-        result: uwufy(args),
+        result: uwufy(args.join(" ")),
       }),
     });
 
