@@ -19,5 +19,6 @@ Commands:
 - encode
 - decode
 - uwufy
+- pasta _new_
 
 [Discord](https://discord.gg/KkMKCchJb8)
