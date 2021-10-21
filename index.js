@@ -1,14 +1,19 @@
 /* eslint-disable */
+
 const { Plugin } = require('powercord/entities');
-const {
-	smallLetters,
-	smallerLetters,
-	flipLetters,
-	fullWidthLetters,
-	emojiLetters,
-} = require('./maps');
 const pasta = require('./emojimixer');
 const uwufy = require('./uwufy');
+
+//Non repeating code but complex > repeating code shut up
+let functions = {};
+createMapper(require('./maps'));
+function createMapper(mod) {
+	for (const [key, value] of Object.entries(mod)) {
+		functions[key] = (input) =>
+			[...input.toLowerCase()].map((l) => value[l] || l).join('');
+	}
+}
+
 module.exports = class Texter extends Plugin {
 	startPlugin() {
 		powercord.api.commands.registerCommand({
@@ -17,7 +22,7 @@ module.exports = class Texter extends Plugin {
 			usage: '{c} [Text you want to flip]',
 			executor: (args) => ({
 				send: true,
-				result: args.join(' ').fullWidth(),
+				result: functions.fullWidthLetters(args.join(' ')),
 			}),
 		});
 
@@ -48,7 +53,9 @@ module.exports = class Texter extends Plugin {
 			usage: '{c} [Text to Emojify]',
 			executor: (args) => ({
 				send: true,
-				result: args.join(' ').split('').join(' ').emoji(),
+				result: functions.emojiLetters(
+					args.join(' ').split('').join(' ').emoji()
+				),
 			}),
 		});
 
@@ -58,7 +65,7 @@ module.exports = class Texter extends Plugin {
 			usage: '{c} [Text you want to flip]',
 			executor: (args) => ({
 				send: true,
-				result: args.join(' ').fullWidth(),
+				result: functions.fullWidthLetters(args.join(' ')),
 			}),
 		});
 
@@ -78,7 +85,7 @@ module.exports = class Texter extends Plugin {
 			usage: '{c} [text that you want to make small]',
 			executor: (args) => ({
 				send: true,
-				result: args.join(' ').small(),
+				result: functions.smallLetters(args.join(' ')),
 			}),
 		});
 
@@ -88,7 +95,7 @@ module.exports = class Texter extends Plugin {
 			usage: '{c} [tiny input]',
 			executor: (args) => ({
 				send: true,
-				result: args.join(' ').smaller(),
+				result: functions.smallerLetters(args.join(' ')),
 			}),
 		});
 
@@ -107,7 +114,9 @@ module.exports = class Texter extends Plugin {
 			usage: '{c} [text to reflip!]',
 			executor: (args) => ({
 				send: true,
-				result: args.join(' ').split('').reverse().join('').flip(),
+				result: functions.flipLetters(
+					args.join(' ').split('').reverse().join('')
+				),
 			}),
 		});
 
@@ -157,7 +166,7 @@ module.exports = class Texter extends Plugin {
 			usage: '{c} [input]',
 			executor: (args) => ({
 				send: true,
-				result: args.join(' ').flip(),
+				result: functions.flipLetters(args.join(' ')),
 			}),
 		});
 
@@ -169,15 +178,6 @@ module.exports = class Texter extends Plugin {
 			executor: (args) => ({
 				send: true,
 				result: space(args),
-			}),
-		});
-		powercord.api.commands.registerCommand({
-			command: 'pasta',
-			description: 'Paste emojis',
-			usage: '{c} [...things]',
-			executor: (args) => ({
-				send: true,
-				result: pasta(args.join(' ')),
 			}),
 		});
 	}
@@ -196,7 +196,6 @@ module.exports = class Texter extends Plugin {
 			'emoji',
 			'uwufy',
 			'space',
-			'pasta',
 		]) {
 			powercord.api.commands.unregisterCommand(command);
 		}
@@ -208,39 +207,3 @@ function space(args) {
 	const str = args.slice(1).join(char);
 	return str + char;
 }
-
-/**
- * @returns ǫ ᴡ ᴇ ʀ ᴛ ʏ ᴜ ɪ ᴏ ᴘ ᴀ s ᴅ ꜰ ɢ ʜ ᴊ ᴋ ʟ ᴢ x ᴄ ᴠ ʙ ɴ ᴍ
- */
-String.prototype.small = function () {
-	return [...this.toLowerCase()].map((l) => smallLetters[l] || l).join('');
-};
-
-/**
- * @returns ᑫ ʷ ᵉ ʳ ᵗ ʸ ᵘ ᶦ ᵒ ᵖ ᵃ ˢ ᵈ ᶠ ᵍ ʰ ʲ ᵏ ˡ ᶻ ˣ ᶜ ᵛ ᵇ ⁿ ᵐ
- */
-String.prototype.smaller = function () {
-	return [...this.toLowerCase()].map((l) => smallerLetters[l] || l).join('');
-};
-
-/**
- * @returns q ʍ ǝ ɹ ʇ ʎ u ı o d ɐ s d ɟ ƃ ɥ ɾ ʞ l z x ɔ ʌ q u ɯ
- */
-String.prototype.flip = function () {
-	return [...this.toLowerCase()].map((l) => flipLetters[l] || l).join('');
-};
-
-/**
- * @returns cant document this ffs
- */
-String.prototype.emoji = function () {
-	return [...this.toLowerCase()].map((l) => emojiLetters[l] || l).join('');
-};
-
-/**
- * //０１２３４５６７８９
- * @returns ｑ　ｗ　ｅ　ｒ　ｔ　ｙ　ｕ　ｉ　ｏ　ｐ　ａ　ｓ　ｄ　ｆ　ｇ　ｈ　ｊ　ｋ　ｌ　ｚ　ｘ　ｃ　ｖ　ｂ　ｎ　ｍ || Ｑ　Ｗ　Ｅ　Ｒ　Ｔ　Ｙ　Ｕ　Ｉ　Ｏ　Ｐ　Ａ　Ｓ　Ｄ　Ｆ　Ｇ　Ｈ　Ｊ　Ｋ　Ｌ　Ｚ　Ｘ　Ｃ　Ｖ　Ｂ　Ｎ　Ｍ
- */
-String.prototype.fullWidth = function () {
-	return [...this].map((l) => fullWidthLetters[l] || l).join('');
-};
