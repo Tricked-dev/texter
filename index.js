@@ -1,7 +1,6 @@
 /* eslint-disable */
 
 const { Plugin } = require('powercord/entities');
-const pasta = require('./emojimixer');
 const uwufy = require('./uwufy');
 
 //Non repeating code but complex > repeating code shut up
